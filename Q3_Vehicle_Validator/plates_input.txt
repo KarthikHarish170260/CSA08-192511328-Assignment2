@@ -1,0 +1,7 @@
+# Input Vehicle Plates for Testing Validator
+tn 09 ab 1234
+KA-01-M-0007
+mh 12 pq 9999
+dl-04-c-1010
+TN9AB1234
+TN 22 1234 AB

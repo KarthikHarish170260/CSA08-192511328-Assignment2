@@ -1,0 +1,36 @@
+=====================================================================================
+TASK 03: VEHICLE REGISTRATION NUMBER VALIDATOR (TOLL PLAZA)
+=====================================================================================
+
+[Official Assignment Test Cases from Prompt]:
+tn 09 ab 1234   -> TN09AB1234  valid
+KA-01-M-0007    -> KA01M0007   valid
+TN9AB1234       -> TN9AB1234   INVALID
+TN 22 1234 AB   -> TN221234AB  INVALID
+
+=====================================================================================
+PREDICTED 6 TEST CASES (WITH 2 INVALID CASES)
+=====================================================================================
+Input Raw          | Predicted  | Observed   | Normalised   | Formatted Receipt | Match?
+-------------------------------------------------------------------------------------
+tn 09 ab 1234      | VALID      | VALID      | TN09AB1234   | TN 09 AB 1234    | PASS
+KA-01-M-0007       | VALID      | VALID      | KA01M0007    | KA 01 M 0007     | PASS
+mh 12 pq 9999      | VALID      | VALID      | MH12PQ9999   | MH 12 PQ 9999    | PASS
+dl-04-c-1010       | VALID      | VALID      | DL04C1010    | DL 04 C 1010     | PASS
+TN9AB1234          | INVALID    | INVALID    | TN9AB1234    | REJECTED         | PASS
+TN 22 1234 AB      | INVALID    | INVALID    | TN221234AB   | REJECTED         | PASS
+
+=====================================================================================
+INQUIRY: NEGATIVE SLICING BEHAVIOR DEMONSTRATION
+=====================================================================================
+9-character plate  : 'KA01M0007'
+  s[-4:]  (Number) : '0007'  (Last 4 chars: indices 5,6,7,8)
+  s[4:-4] (Series) : 'M'     (Slice from index 4 to 9-4=5: 1 character)
+10-character plate : 'TN09AB1234'
+  s[-4:]  (Number) : '1234'  (Last 4 chars: indices 6,7,8,9)
+  s[4:-4] (Series) : 'AB'    (Slice from index 4 to 10-4=6: 2 characters)
+Insight: Using s[4:-4] elegantly extracts the series whether length is 9 or 10 without branching!
+
+Micro-benchmark (50,000 iterations):
+- Slicing & isalpha/isdigit : 0.0112 s (Built-in C methods, zero overhead)
+- Regular Expression (re)   : 0.0197 s (DFA state machine traversal)
