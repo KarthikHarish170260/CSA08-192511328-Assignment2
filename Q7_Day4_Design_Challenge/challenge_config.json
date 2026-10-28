@@ -1,0 +1,9 @@
+{
+  "challenge_target": "Q6 Temple Steps Staircase Problem",
+  "scaling_tests": [10, 20, 25, 30, 50, 100, 1000, 10000, 100000],
+  "objectives": {
+    "zero_crash": true,
+    "auxiliary_space": "O(1)",
+    "latency_limit_seconds": 0.010
+  }
+}
