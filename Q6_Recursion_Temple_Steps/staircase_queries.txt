@@ -1,0 +1,12 @@
+# Staircase Climb Step Queries
+n=1
+n=2
+n=3
+n=4
+n=5
+n=6
+n=10
+n=20
+n=25
+n=30
+n=1000

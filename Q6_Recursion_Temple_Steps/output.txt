@@ -1,0 +1,70 @@
+=====================================================================================
+TASK 06: TEMPLE STEPS CLIMBING - RECURSION, MEMOISATION & CALL LIMITS
+=====================================================================================
+
+[Correctness Verification: Hand Calculations vs Code (n = 1 to 6)]
+n    | Hand Calculated  | ways_naive   | ways_iterative   | Status
+-----------------------------------------------------------------
+1    | 1                | 1            | 1                | MATCH
+2    | 2                | 2            | 2                | MATCH
+3    | 3                | 3            | 3                | MATCH
+4    | 5                | 5            | 5                | MATCH
+5    | 8                | 8            | 8                | MATCH
+6    | 13               | 13           | 13               | MATCH
+
+=====================================================================================
+[Official Assignment Execution Check for n = 25]
+naive: 121393 calls = 242785
+memo : 121393 calls = 26
+
+=====================================================================================
+GROWTH INVESTIGATION: NAIVE VS MEMOISED CALL COUNTS
+=====================================================================================
+n     | Result W(n)    | Predicted Naive (2W-1)   | Actual Naive Calls   | Predicted Memo (n+1)   | Actual Memo Calls
+---------------------------------------------------------------------------------------------------------
+10    | 89             | 177                      | 177                  | 11                     | 11
+20    | 10946          | 21891                    | 21891                | 21                     | 21
+25    | 121393         | 242785                   | 242785               | 26                     | 26
+30    | 1346269        | 2692537                  | 2692537              | 31                     | 31
+
+=====================================================================================
+
+Call Tree for ways_naive(5):
+                         ways(5)
+                     /             \
+              ways(4)               ways(3)*
+             /       \              /       \
+         ways(3)*    ways(2)*    ways(2)*   ways(1)
+         /      \    /     \     /     \
+     ways(2)* ways(1) w(1) w(0) w(1)  w(0)
+     /     \
+   w(1)   w(0)
+
+[*] Marks redundant sub-evaluations:
+- ways(3) is recomputed 2 times
+- ways(2) is recomputed 3 times
+- ways(1) is invoked 5 times
+- ways(0) is invoked 3 times
+Total calls = 15 calls for n=5; grows as O(phi^n) where phi approx. 1.618.
+
+=====================================================================================
+DEPLOYMENT INVESTIGATION: n = 1000 & sys.getrecursionlimit()
+=====================================================================================
+Current Python Recursion Limit : 1000
+Attempting ways_memo(1000)...
+>> Caught Expected Exception: RecursionError (maximum recursion depth exceeded)
+>> Cause: Maximum call stack depth (1,000 frames) was exceeded by recursive call chain.
+
+Iterative Solution for n = 1,000:
+>> Success! Calculated 209-digit result in 0.0868 ms.
+>> First 20 digits: 70330367711422815821... (Total 209 digits)
+>> Auxiliary Stack Space: O(1) memory! Zero RecursionError risk.
+
+[DEPLOYMENT DECISION DEFENSE]
+1. Raising the recursion limit via sys.setrecursionlimit() is DANGEROUS in production because:
+   - It risks an uncatchable OS-level C-stack overflow segmentation fault.
+   - It consumes unnecessary memory for activation records on the heap/stack.
+2. Rewriting with an iterative loop is the strictly superior engineering decision:
+   - Eliminates call overhead entirely.
+   - Reduces space complexity from O(n) to strictly O(1).
+   - Safely scales to n = 100,000+ with zero crashes.
