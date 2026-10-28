@@ -2,11 +2,11 @@
 **Course:** CSA08 / CSA0807 – Python Programming  
 **Unit Coverage:** CO2 (Control Flow, String Operations, Functions, Recursion, and Scope)  
 **Bloom’s Levels Assessed:** K3 – Apply, K4 – Analyse, K5 – Evaluate  
-**Student Name:** [Your Name]  
-**Register Number:** [Your Register Number, e.g., 23BCE1001]  
+**Student Name:** V. Karthik Harish  
+**Register Number:** 192511328
 **Submission Date:** 30/10/2026  
 **Python Version:** Python 3.14.3 (Compatible with Python 3.10+)  
-**Repository Name:** `CSA08-<RegisterNumber>-Assignment2`
+**Repository Name:** `CSA08-192511328-Assignment2`
 
 ---
 
@@ -24,7 +24,7 @@
 This repository contains full, working implementations for all 7 tasks of Assignment 2, including "Complete the Code" challenges, alternative concept implementations, empirical benchmarks, and the Day-4 Design Challenge.
 
 ```text
-CSA08-<RegisterNumber>-Assignment2/
+CSA08-192511328-Assignment2/
 │
 ├── Q1_Electricity_Subsidy/
 │   └── q1_subsidy.py                  # Task 01: Subsidy eligibility boundary analysis
