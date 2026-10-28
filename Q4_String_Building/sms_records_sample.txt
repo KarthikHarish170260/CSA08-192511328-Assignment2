@@ -1,0 +1,4 @@
+# Sample records for Statement Generation Benchmark
+Item0:Rs0;Item1:Rs1;Item2:Rs2;Item3:Rs3;Item4:Rs4;Item5:Rs5
+Item6:Rs6;Item7:Rs7;Item8:Rs8;Item9:Rs9;Item10:Rs10
+Total simulated records: 200000
