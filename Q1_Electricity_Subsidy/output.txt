@@ -1,0 +1,24 @@
+=====================================================================================
+TASK 01: STATE ELECTRICITY SUBSIDY ELIGIBILITY EVALUATION
+=====================================================================================
+HH ID              | Units | Card  | Snr   | Predicted Decision               | Separate if (Flawed)       | if-elif-else (Correct)
+-----------------------------------------------------------------------------------------------------------------------------
+H1                 | 50    | False | False | Full Subsidy (<= 100 units)      | Full Subsidy               | Full Subsidy
+H2 (Boundary 100)  | 100   | True  | False | Full Subsidy (Exact boundary <=  | Full Subsidy, Partial Subsidy | Full Subsidy
+H3 (Boundary 101)  | 101   | True  | False | Partial Subsidy (101 <= units <= | Partial Subsidy            | Partial Subsidy
+H4 (Boundary 101)  | 101   | False | False | No Subsidy (101 <= units <= 200  | No Subsidy                 | No Subsidy
+H5 (Boundary 200)  | 200   | True  | False | Partial Subsidy (Exact boundary  | Partial Subsidy            | Partial Subsidy
+H6 (Boundary 200)  | 200   | False | False | No Subsidy (Exact boundary 200 w | No Subsidy                 | No Subsidy
+H7 (Boundary 201)  | 201   | False | True  | Senior Special Subsidy (> 200 un | Senior Special Subsidy     | Senior Special Subsidy
+H8 (Boundary 201)  | 201   | True  | False | No Subsidy (> 200 units without  | No Subsidy                 | No Subsidy
+-----------------------------------------------------------------------------------------------------------------------------
+
+[KEY FINDING & ANALYSIS]
+1. In H2 (100 units with ration card):
+   - Separate if grants BOTH 'Full Subsidy' AND 'Partial Subsidy' because both if statements are evaluated independently.
+   - if-elif-else grants ONLY 'Full Subsidy' because it short-circuits as soon as 'units <= 100' matches.
+2. Chained comparison (101 <= units <= 200) prevents boundary leakage between adjacent slabs.
+
+Benchmark (100,000 iterations at 150 units):
+- if-elif-else Ladder Time : 0.0058 s (O(1) auxiliary space, direct bytecode jumps)
+- Table Lookup Time        : 0.0383 s (O(k) linear scan with lambda dispatch)

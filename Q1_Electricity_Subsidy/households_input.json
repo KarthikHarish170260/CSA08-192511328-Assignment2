@@ -1,0 +1,10 @@
+[
+  {"id": "H1", "units": 50, "has_ration_card": false, "has_senior_above_80": false, "predicted": "Full Subsidy"},
+  {"id": "H2", "units": 100, "has_ration_card": true, "has_senior_above_80": false, "predicted": "Full Subsidy"},
+  {"id": "H3", "units": 101, "has_ration_card": true, "has_senior_above_80": false, "predicted": "Partial Subsidy"},
+  {"id": "H4", "units": 101, "has_ration_card": false, "has_senior_above_80": false, "predicted": "No Subsidy"},
+  {"id": "H5", "units": 200, "has_ration_card": true, "has_senior_above_80": false, "predicted": "Partial Subsidy"},
+  {"id": "H6", "units": 200, "has_ration_card": false, "has_senior_above_80": false, "predicted": "No Subsidy"},
+  {"id": "H7", "units": 201, "has_ration_card": false, "has_senior_above_80": true, "predicted": "Senior Special Subsidy"},
+  {"id": "H8", "units": 201, "has_ration_card": true, "has_senior_above_80": false, "predicted": "No Subsidy"}
+]
