@@ -1,0 +1,15 @@
+{
+  "menu": {
+    "Tea": 15.0,
+    "Coffee": 20.0,
+    "Vada": 25.0,
+    "Masala Dosa": 60.0,
+    "Idli": 30.0,
+    "Upma": 35.0
+  },
+  "customers": [
+    {"id": "C1", "items": ["Masala Dosa", "Tea"], "discount": 5.0},
+    {"id": "C2", "items": ["Idli", "Vada", "Coffee"], "discount": 0.0},
+    {"id": "C3", "items": ["Upma"], "discount": 0.0}
+  ]
+}

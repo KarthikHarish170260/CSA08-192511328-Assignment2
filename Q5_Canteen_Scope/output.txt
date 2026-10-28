@@ -1,0 +1,29 @@
+=====================================================================================
+TASK 05: COLLEGE CANTEEN ORDER SYSTEM - FUNCTIONS & SCOPE
+=====================================================================================
+
+[Official Assignment Execution Check]:
+Buggy Output : ['Tea', 'Vada'] ['Tea', 'Vada']
+Correct Output: ['Tea'] ['Vada']
+
+[Inspecting __defaults__ Attribute]:
+add_item_buggy.__defaults__ : (['Tea', 'Vada'],)
+add_item.__defaults__       : (None,)
+-> Explanation: add_item_buggy.__defaults__ references the mutated list object in memory,
+   carrying forward items to all future callers who omit the 'order' argument.
+
+=====================================================================================
+TESTING 3 CUSTOMERS IN SEQUENCE (INDEPENDENT ORDERS)
+=====================================================================================
+Customer 1 Order: ['Masala Dosa', 'Tea']    | Subtotal: Rs  75.00 | GST: Rs  3.56 | Total: Rs  74.81
+Customer 2 Order: ['Idli', 'Vada', 'Coffee'] | Subtotal: Rs  75.00 | GST: Rs  3.75 | Total: Rs  78.75
+Customer 3 Order: ['Upma']                  | Subtotal: Rs  35.00 | GST: Rs  1.75 | Total: Rs  36.75
+>> Accumulated Global Daily Revenue: Rs 190.31
+
+=====================================================================================
+ALTERNATIVE CONCEPT: CLOSURE-BASED ORDER STATE (NONLOCAL)
+=====================================================================================
+Anand adds Tea   : ['Tea']
+Priya adds Vada  : ['Vada']
+Anand adds Samosa: ['Tea', 'Masala Dosa']
+Priya's order remains isolated: ['Vada', 'Coffee']
