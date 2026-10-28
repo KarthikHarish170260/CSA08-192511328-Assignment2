@@ -1,0 +1,41 @@
+================================================================================
+SCENARIO 1: While Loop with 2 Blank Entries, 1 Wrong, then Correct OTP
+================================================================================
+
+--- Starting While-Loop OTP Verification ---
+  [Input: Blank] Blank entry detected. Ignored; please enter a valid OTP.
+  [Input: Blank] Blank entry detected. Ignored; please enter a valid OTP.
+  [Input: '999999'] Incorrect OTP! Attempts used: 1/3. Remaining: 2
+  [Input: '482910'] Success! OTP verified on attempt #2.
+Result: GRANTED
+
+================================================================================
+SCENARIO 2: While Loop with 3 Consecutive Wrong Entries (Account Lockout)
+================================================================================
+
+--- Starting While-Loop OTP Verification ---
+  [Input: '111111'] Incorrect OTP! Attempts used: 1/3. Remaining: 2
+  [Input: '222222'] Incorrect OTP! Attempts used: 2/3. Remaining: 1
+  [Input: '333333'] Incorrect OTP! Attempts used: 3/3. Remaining: 0
+  >> [SECURITY ALERT] Account locked for 30 minutes due to 3 failed attempts.
+Result: LOCKED
+
+================================================================================
+SCENARIO 3: Changed Condition - Security Question grants 2 extra attempts
+================================================================================
+
+--- Starting Dynamic While-Loop (with Security Question Extension) ---
+  [Failed] Attempt 1/3 exhausted.
+  [Failed] Attempt 2/3 exhausted.
+  [Failed] Attempt 3/3 exhausted.
+  >> Initial 3 attempts failed. Prompting Security Question: 'What is your mother's maiden name?'
+  >> Security Answer Verified! 2 Extra attempts granted. New limit: 5.
+  [Success] OTP verified on attempt #4!
+Result: GRANTED
+
+================================================================================
+SCENARIO 4: Recursive Alternative Execution
+================================================================================
+  [Recursive Fail] Wrong OTP. Attempt 1/3 used.
+  [Recursive Success] Verified on attempt #2.
+Result: GRANTED

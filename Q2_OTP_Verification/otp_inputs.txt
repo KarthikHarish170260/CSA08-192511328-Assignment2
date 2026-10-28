@@ -1,0 +1,18 @@
+# Test Case Inputs for OTP Verification
+# Scenario 1: Blank entries followed by wrong, then correct
+[BLANK]
+
+999999
+482910
+
+# Scenario 2: Three consecutive wrong entries (Account lockout)
+111111
+222222
+333333
+
+# Scenario 3: Security question challenge
+000001
+000002
+000003
+Sharma
+482910
